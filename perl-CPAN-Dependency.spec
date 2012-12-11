@@ -1,28 +1,28 @@
 %define upstream_name    CPAN-Dependency
 %define upstream_version 0.15
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	3
 
-Summary:    Analyzes CPAN modules and generates their dependency tree
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/CPAN/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Analyzes CPAN modules and generates their dependency tree
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/CPAN/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(CPANPLUS)
-BuildRequires: perl(DBD::SQLite)
-BuildRequires: perl(DBI)
-BuildRequires: perl(File::Slurp)
-BuildRequires: perl(File::Spec)
-BuildRequires: perl(Module::CoreList)
-BuildRequires: perl(Test::Deep)
-BuildRequires: perl(Test::More)
-BuildRequires: perl(Test::Warn)
-BuildRequires: perl(YAML)
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildRequires:	perl(CPANPLUS)
+BuildRequires:	perl(DBD::SQLite)
+BuildRequires:	perl(DBI)
+BuildRequires:	perl(File::Slurp)
+BuildRequires:	perl(File::Spec)
+BuildRequires:	perl(Module::CoreList)
+BuildRequires:	perl(Test::Deep)
+BuildRequires:	perl(Test::More)
+BuildRequires:	perl(Test::Warn)
+BuildRequires:	perl(YAML)
+BuildArch:	noarch
 
 %description
 This module can process a set of distributions, up to the whole CPAN, and
@@ -42,22 +42,35 @@ structure looks like this:
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc Changes LICENSE README
 %{_mandir}/man3/*
-%perl_vendorlib/*
+%{perl_vendorlib}/*
+
+%changelog
+* Mon Apr 18 2011 Funda Wang <fwang@mandriva.org> 0.150.0-2mdv2011.0
++ Revision: 654879
+- rebuild for updated spec-helper
+
+* Tue Jul 28 2009 Jérôme Quelin <jquelin@mandriva.org> 0.150.0-1mdv2011.0
++ Revision: 401699
+- rebuild using %%perl_convert_version
+- fixed license field
+
+* Mon Dec 08 2008 Jérôme Quelin <jquelin@mandriva.org> 0.15-1mdv2009.1
++ Revision: 311882
+- import perl-CPAN-Dependency
+
+
+* Mon Dec 08 2008 cpan2dist 0.15-1mdv
+- initial mdv release, generated with cpan2dist
 
