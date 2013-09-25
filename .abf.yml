@@ -1,2 +1,4 @@
+removed_sources:
+  CPAN-Dependency-0.15.tar.gz: c2bcde20535404dd55226a2f245bd4f60e20e33b
 sources:
-  "CPAN-Dependency-0.15.tar.gz": c2bcde20535404dd55226a2f245bd4f60e20e33b
+  CPAN-Dependency-0.16.tar.gz: 026097cc93a2a756a6310500f60a492102c0b81b

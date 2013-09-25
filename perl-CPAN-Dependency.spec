@@ -1,15 +1,15 @@
 %define upstream_name    CPAN-Dependency
-%define upstream_version 0.15
+%define upstream_version 0.16
 
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
-Release:	3
+Release:	1
 
 Summary:	Analyzes CPAN modules and generates their dependency tree
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/CPAN/%{upstream_name}-%{upstream_version}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/CPAN/CPAN-Dependency-%{upstream_version}.tar.gz
 
 BuildRequires:	perl-devel
 BuildRequires:	perl(CPANPLUS)
@@ -73,4 +73,5 @@ make test
 
 * Mon Dec 08 2008 cpan2dist 0.15-1mdv
 - initial mdv release, generated with cpan2dist
+
 
