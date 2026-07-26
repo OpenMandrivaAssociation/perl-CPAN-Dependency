@@ -1,15 +1,13 @@
 %define upstream_name    CPAN-Dependency
-%define upstream_version 0.16
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	4
+Version:	0.16
+Release:	5
 
 Summary:	Analyzes CPAN modules and generates their dependency tree
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/CPAN-Dependency
-Source0:	https://cpan.metacpan.org/authors/id/S/SA/SAPER/CPAN-Dependency-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/S/SA/SAPER/CPAN-Dependency-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -40,7 +38,7 @@ saved and loaded using 'save_deps_tree()' and 'load_deps_tree()'. The
 structure looks like this: 
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -64,8 +62,7 @@ make test
 
 * Tue Jul 28 2009 Jérôme Quelin <jquelin@mandriva.org> 0.150.0-1mdv2011.0
 + Revision: 401699
-- rebuild using %%perl_convert_version
-- fixed license field
+- rebuild using %0.16 fixed license field
 
 * Mon Dec 08 2008 Jérôme Quelin <jquelin@mandriva.org> 0.15-1mdv2009.1
 + Revision: 311882
